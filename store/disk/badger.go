@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/dgraph-io/badger"
+	"github.com/dgraph-io/badger/v3"
 )
 
 // BadgerDB - represents a badger db implementation
@@ -19,7 +19,6 @@ type BadgerDB struct {
 // OpenPogrebDB - Opens the specified path
 func OpenBadgerDB(path string) (*BadgerDB, error) {
 	badgerOptions := badger.DefaultOptions(path)
-	badgerOptions.EventLogging = false
 	badgerOptions.Logger = nil
 	db, err := badger.Open(badgerOptions)
 	if err != nil {
